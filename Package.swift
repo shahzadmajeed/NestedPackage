@@ -2,6 +2,9 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+import Foundation
+
+let packageURL = URL(fileURLWithPath: #file).deletingLastPathComponent()
 
 let package = Package(
     name: "NestedPackage",
@@ -11,7 +14,9 @@ let package = Package(
             name: "NestedPackage",
             targets: ["NestedPackage"]),
     ],
-    dependencies: [.package(path: "LocalPackage")],
+    dependencies: [
+        .package(path: "\(packageURL)/LocalPackage")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
